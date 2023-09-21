@@ -207,3 +207,27 @@ WHERE birthdate BETWEEN DATE_SUB(CURDATE(), INTERVAL 3 YEAR) AND DATE_SUB(CURDAT
 
 
 -- 12. Объединить все таблицы в одну, при этом сохраняя поля, указывающие на прошлую принадлежность к старым таблицам.
+
+SELECT * FROM pets
+LEFT JOIN cats ON cats.pets_id = pets.id
+WHERE name is NOT NULL
+UNION ALL
+(SELECT * FROM pets
+LEFT JOIN dogs ON dogs.pets_id = pets.id
+WHERE name is NOT NULL
+UNION ALL
+SELECT * FROM pets
+RIGHT JOIN hamsters ON hamsters.pets_id = pets.id)
+
+UNION ALL
+
+SELECT * FROM packanimals
+LEFT JOIN horses ON horses.packanimals_id = packanimals.id
+WHERE name is NOT NULL
+UNION ALL
+(SELECT * FROM packanimals
+LEFT JOIN camels ON camels.packanimals_id = packanimals.id
+WHERE name is NOT NULL
+UNION ALL
+SELECT * FROM packanimals
+RIGHT JOIN donkeys ON donkeys.packanimals_id = packanimals.id);
