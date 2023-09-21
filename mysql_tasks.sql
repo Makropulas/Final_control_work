@@ -185,3 +185,25 @@ VALUES
 -- 10. Удалив из таблицы верблюдов, т.к. верблюдов решили перевезти в другой питомник на зимовку. 
 --     Объединить таблицы лошади, и ослы в одну таблицу.
 
+DELETE FROM camels;
+
+CREATE TABLE IF NOT EXISTS horsesanddonkeys
+SELECT * FROM horses
+UNION SELECT * FROM donkeys;
+
+
+-- 11. Создать новую таблицу “молодые животные” в которую попадут все животные старше 1 года, но младше 3 лет 
+--     и в отдельном столбце с точностью до месяца подсчитать возраст животных в новой таблице
+
+CREATE TABLE IF NOT EXISTS younganimals
+SELECT *, TIMESTAMPDIFF(MONTH, birthdate, CURDATE()) `age (in month)` FROM (
+	SELECT * FROM cats
+	UNION SELECT * FROM dogs
+	UNION SELECT * FROM hamsters
+	UNION SELECT * FROM horses
+    UNION SELECT * FROM donkeys
+) AS allanimals
+WHERE birthdate BETWEEN DATE_SUB(CURDATE(), INTERVAL 3 YEAR) AND DATE_SUB(CURDATE(), INTERVAL 1 YEAR);
+
+
+-- 12. Объединить все таблицы в одну, при этом сохраняя поля, указывающие на прошлую принадлежность к старым таблицам.
