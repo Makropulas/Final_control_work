@@ -8,7 +8,12 @@ public abstract class Animal implements ClassnameInterface {
 
     private final String name;
     private final LocalDate birthdate;
-    private ArrayList<String> commands = new ArrayList<>();
+    private final ArrayList<String> commands = new ArrayList<>();
+
+    public Animal(String name, LocalDate birthdate) {
+        this.name = name;
+        this.birthdate = birthdate;
+    }
 
     public String getName() {
         return name;
@@ -24,16 +29,11 @@ public abstract class Animal implements ClassnameInterface {
         if (ageMonth >= 12) {
             long years = ageMonth / 12;
             long month = ageMonth - (years * 12);
-            age = String.format(years + " г. " + month + " мес.");
+            age = String.format(years + "г. " + month + "мес.");
         } else {
-            age = String.format(ageMonth + " мес.");
+            age = String.format(ageMonth + "мес.");
         }
         return age;
-    }
-
-    public Animal(String name, LocalDate birthdate) {
-        this.name = name;
-        this.birthdate = birthdate;
     }
 
     public void addCommand(String command) {
@@ -42,6 +42,10 @@ public abstract class Animal implements ClassnameInterface {
 
     public String getCommands() {
         return String.join(", ", commands);
+    }
+
+    public int getNumberOfCommands() {
+        return commands.size();
     }
 
     @Override

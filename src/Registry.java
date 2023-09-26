@@ -14,8 +14,8 @@ public class Registry {
 
     public void printRegistry() {
         for (Map.Entry<Integer, Animal> item : animalsMap.entrySet()) {
-            System.out.printf("ID: %d | %s: %s Возраст: %s\n", item.getKey(), item.getValue().getClassname(),
-                    item.getValue().getName(), item.getValue().getAge());
+            System.out.printf("ID: %d | %s: %s Возраст: %s Знает команд: %d\n", item.getKey(), item.getValue().getClassname(),
+                    item.getValue().getName(), item.getValue().getAge(), item.getValue().getNumberOfCommands());
         }
     }
 

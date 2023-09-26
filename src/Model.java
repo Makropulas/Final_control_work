@@ -63,6 +63,17 @@ public class Model {
         return id;
     }
 
+    public static boolean isEmptyRegistry(Registry registry) {
+        if (registry.isEmpty()) {
+            View.printSmallDelimiter();
+            System.out.println("\n>>> Реестр пуст. Выход в главное меню <<<\n");
+            Model.waitingForInput();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public static String enterCommand() {
         System.out.print("Введите команду: ");
         return scanner.nextLine();
@@ -96,6 +107,6 @@ public class Model {
 
     public static void waitingForInput() {
         System.out.print("\nДля продолжения нажмите Enter ");
-        boolean pass = Boolean.parseBoolean(scanner.nextLine());
+        boolean pass = Boolean.parseBoolean(scanner.nextLine()); // способ, позволивший сделать ожидание ввода Enter (Случайно придумал сам)
     }
 }
