@@ -9,4 +9,9 @@ public class Cat extends Pet{
         super(name, birthdate);
     }
 
+
+    @Override
+    public String getClassname() {
+        return "Кошка";
+    }
 }

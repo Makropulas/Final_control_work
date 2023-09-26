@@ -7,4 +7,8 @@ public class Horse extends PackAnimal {
         super(name, birthdate);
     }
 
+    @Override
+    public String getClassname() {
+        return "Лошадь";
+    }
 }

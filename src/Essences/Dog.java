@@ -8,4 +8,8 @@ public class Dog extends Pet{
         super(name, birthdate);
     }
 
+    @Override
+    public String getClassname() {
+        return "Собака";
+    }
 }
