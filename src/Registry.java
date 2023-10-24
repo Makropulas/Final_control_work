@@ -6,7 +6,7 @@ import java.util.Map;
 public class Registry {
     private final HashMap<Integer, Animal> animalsMap = new HashMap<>();
 
-    private int id = 1;
+    private int id = 0;
 
     public Animal getAnimal(int id) {
         return animalsMap.get(id);
@@ -24,7 +24,7 @@ public class Registry {
     }
 
     public void addAnimal(Animal animal) {
-        animalsMap.put(generateId(), animal);
+        animalsMap.put(++id, animal);
     }
 
     public void deleteAnimal(int id) {
@@ -33,9 +33,5 @@ public class Registry {
 
     public boolean isEmpty() {
         return animalsMap.isEmpty();
-    }
-
-    private int generateId() {
-        return id++;
     }
 }
